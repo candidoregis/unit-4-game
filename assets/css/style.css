@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Londoner;
+    src:url("../fonts/Londoner-p1Gy.ttf");
+}
+
+@font-face {
+    font-family: Summer;
+    src:url("../fonts/SummerFestival-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Starmix';
+    src:url('../fonts/StarmiX.ttf.woff') format('woff'),
+        url('../fonts/StarmiX.ttf.svg') format('svg'),
+        url('../fonts/StarmiX.ttf.eot'),
+        url('../fonts/StarmiX.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+#gameTitle{
+    font-family: Starmix;
+}
+
+img {
+    width: 100%;
+}
