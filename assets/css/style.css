@@ -47,6 +47,11 @@ img {
     border: none;
 }
 
+#resultImg{
+    max-width: 800px;
+    max-height: auto;
+}
+
 /* RESULTS DISPLAY ANIMATION AND PARAMETERS */
 .custom-wrap{
     top: 150px;
@@ -68,7 +73,6 @@ img {
     animation-name: resultScreen;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-
 }
 
 @keyframes resultScreen {
@@ -78,9 +82,30 @@ img {
         visibility: hidden;
     }
     100% {
-        background-color: #001f3f;
+        background-color: white;
         z-index: 9999;
         visibility: visible;
+    }
+} 
+
+.resultOut {
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: resultScreenOut;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes resultScreenOut {
+    0% {
+        background-color: white;
+        z-index: 9999;
+        visibility: visible;
+    }
+    100% {
+        background-color:transparent;
+        z-index: -9999;
+        visibility: hidden;
     }
 } 
 
@@ -99,7 +124,7 @@ img {
     color: #001f3f;
 }
 
-.resultText {
+.resultInText {
     animation-duration: 1.5s;
     animation-name: fadeInAnimation;
     animation-delay: 1.5s;
@@ -117,8 +142,4 @@ img {
         opacity: 1;
         color: hsl(210, 100%, 75%); 
       }
-  }
-
-  #resBtn{
-      background-color: #4d505f;
   }

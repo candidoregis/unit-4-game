@@ -22,9 +22,8 @@ $(document).ready(function () {
 
     function generateRandomGemValue() {
         for (var i = 0; i < gemsValue.length; i++) {
-            gemsValue[i] = Math.floor(Math.random() * 12)+1;
+            gemsValue[i] = Math.floor(Math.random() * 12) + 1;
         }
-        console.log(gemsValue);
     }
 
     function generateRandomGoal() {
@@ -39,16 +38,16 @@ $(document).ready(function () {
     }
 
     function verifyPoints() {
-        if(result==""){
-            if(yourScoreNumber===yourGoalNumber){
+        if (result == "") {
+            if (yourScoreNumber === yourGoalNumber) {
                 result = true;
-            } else if (yourScoreNumber>yourGoalNumber) {
+            } else if (yourScoreNumber > yourGoalNumber) {
                 result = false;
             }
         }
     }
 
-    function continueGame(){
+    function continueGame() {
         initializingGame();
         generateRandomGoal();
         generateRandomGemValue();
@@ -56,22 +55,34 @@ $(document).ready(function () {
         resetYouWinLose();
     }
 
-// Displaying the results with an animation
-function youWinLose(result) {
-    $("#hText").html(result);
-    $("#resultWrapper").toggleClass("result",true);
-    $("#hText").toggleClass("resultText",true);
-    $("#resBtn").toggleClass("resultText",true);
-}
+    // Displaying the results with an animation
+    function youWinLose(result) {
+        $("#resultWrapper").toggleClass("result", true);
+        $("#resBtn").toggleClass("resultInText",true);
+        $("#resultImg").toggleClass("resultInText",true);
+        if (result == "You WIN") {
+            $("#resultImg").attr("src","../unit-4-game/assets/images/youwin.jpg");
+        } else if (result == "You LOSE") {
+            $("#resultImg").attr("src","../unit-4-game/assets/images/youlose.jpeg");
+        }
+    }
 
-// Resetting the class parameters to the results display
-function resetYouWinLose() {
-    $("#hText").html("");
-    $("#resultWrapper").toggleClass("result",false);
-    $("#hText").toggleClass("resultText",false);
-    $("#resBtn").toggleClass("resultText",false);
-}
+    // Resetting the class parameters to the results display
+    function resetYouWinLose() {
+        $("#resBtn").toggleClass("resultOutText",false);
+        $("#resultImg").toggleClass("resultOutText",false);
+        $("#resultWrapper").toggleClass("resultOut", false);
+    }
 
+    function youWinLoseFadeOut(result) {
+        $("#resultImg").attr("src","#");
+        $("#resultImg").toggleClass("resultInText",false);
+        $("#resultImg").toggleClass("resultOutText",true);
+        $("#resBtn").toggleClass("resultInText",false);
+        $("#resBtn").toggleClass("resultOutText",true);
+        $("#resultWrapper").toggleClass("result", false);
+        $("#resultWrapper").toggleClass("resultOut", true);
+    }
 
     // MAIN PROCEDURE
     initializingGameCounters();
@@ -103,17 +114,16 @@ function resetYouWinLose() {
         verifyPoints();
 
         if (result) {
-            console.log("You WIN");
             winsCounter++;
             youWinLose("You WIN");
-        } else if (result===false) {
-            console.log("You LOSE");
+        } else if (result === false) {
             lossesCounter++;
             youWinLose("You LOSE");
         }
 
         $("#resBtn").on("click", function () {
-            continueGame();
+            youWinLoseFadeOut();
+            setTimeout(continueGame,500);
         });
 
         updateData();
