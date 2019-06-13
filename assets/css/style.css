@@ -1,3 +1,4 @@
+/* IMPORTING FONTS */
 @font-face {
     font-family: Londoner;
     src:url("../fonts/Londoner-p1Gy.ttf");
@@ -17,7 +18,7 @@
     font-weight: normal;
     font-style: normal;
 }
-
+/* ---------------------------------------------------------- */
 body {
     background-image: url("../images/escheresque_ste.png");
     background-repeat: repeat;
@@ -52,7 +53,8 @@ img {
     max-height: auto;
 }
 
-/* RESULTS DISPLAY ANIMATION AND PARAMETERS */
+/* ---------------------------------------------------------- */
+/* RESULTS - DISPLAY ANIMATION AND PARAMETERS */
 .custom-wrap{
     top: 150px;
     width: 100%;
@@ -129,17 +131,17 @@ img {
     animation-name: fadeInAnimation;
     animation-delay: 1.5s;
     animation-fill-mode: forwards;
-  }
+}
 
-  @keyframes fadeInAnimation {
-      0% {
-          visibility:hidden; 
-          opacity: 0;
-      }
+@keyframes fadeInAnimation {
+    0% {
+        visibility:hidden; 
+        opacity: 0;
+    }
   
-      100% {
+    100% {
         visibility: visible; 
         opacity: 1;
         color: hsl(210, 100%, 75%); 
-      }
-  }
+    }
+}

@@ -1,4 +1,4 @@
-
+// CRYSTAL COLLECTORS SCRIPT
 $(document).ready(function () {
 
     var winsCounter;
@@ -8,11 +8,13 @@ $(document).ready(function () {
     var gemsValue;
     var result;
 
+    // INITIALIZING THE WINS AND LOSSES COUNTER - ACTIVE UNTIL CLOSING BROWSER
     function initializingGameCounters() {
         winsCounter = 0;
         lossesCounter = 0;
     }
 
+    // INITIALIZING THE PARAMETERS FOR ACTIVE ROUND
     function initializingGame() {
         yourGoalNumber = 0;
         yourScoreNumber = 0;
@@ -20,16 +22,19 @@ $(document).ready(function () {
         result = "";
     }
 
+    // GENERATING GEMS RANDOM VALUES
     function generateRandomGemValue() {
         for (var i = 0; i < gemsValue.length; i++) {
             gemsValue[i] = Math.floor(Math.random() * 12) + 1;
         }
     }
 
+    // GENERATING THE ROUND GOAL
     function generateRandomGoal() {
         yourGoalNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
     }
 
+    // FUNCTION TO UPDATE THE SCREEN DATA BASED ON SCRIPTS PARAMETERS
     function updateData() {
         $("#yourGoal").text(yourGoalNumber);
         $("#yourScore").text(yourScoreNumber);
@@ -37,6 +42,7 @@ $(document).ready(function () {
         $("#lossesCount").text(lossesCounter);
     }
 
+    // FUNCTION TO VERIFY IF PLAYER WON OR LOST THE GAME
     function verifyPoints() {
         if (result == "") {
             if (yourScoreNumber === yourGoalNumber) {
@@ -47,6 +53,7 @@ $(document).ready(function () {
         }
     }
 
+    // FUNCTION TO RESET GAME DATA TO CONTINUE GAME (EXCEPT WINS/LOSSES COUNTERS)
     function continueGame() {
         initializingGame();
         generateRandomGoal();
@@ -55,25 +62,26 @@ $(document).ready(function () {
         resetYouWinLose();
     }
 
-    // Displaying the results with an animation
+    // DISPLAYING THE RESULTS THROUGH AN ANIMATION
     function youWinLose(result) {
         $("#resultWrapper").toggleClass("result", true);
         $("#resBtn").toggleClass("resultInText",true);
         $("#resultImg").toggleClass("resultInText",true);
         if (result == "You WIN") {
-            $("#resultImg").attr("src","../unit-4-game/assets/images/youwin.jpg");
+            $("#resultImg").attr("src","../unit-4-game/assets/images/winnin.png");
         } else if (result == "You LOSE") {
-            $("#resultImg").attr("src","../unit-4-game/assets/images/youlose.jpeg");
+            $("#resultImg").attr("src","../unit-4-game/assets/images/ko.png");
         }
     }
 
-    // Resetting the class parameters to the results display
+    // FUNCTION TO RESET CLASS PARAMETERS RELATED TO ANIMATION
     function resetYouWinLose() {
         $("#resBtn").toggleClass("resultOutText",false);
         $("#resultImg").toggleClass("resultOutText",false);
         $("#resultWrapper").toggleClass("resultOut", false);
     }
 
+    // FUNCTION TO SET CLASS PARAMETERS RELATED TO ANIMATION
     function youWinLoseFadeOut(result) {
         $("#resultImg").attr("src","#");
         $("#resultImg").toggleClass("resultInText",false);
@@ -88,6 +96,7 @@ $(document).ready(function () {
     initializingGameCounters();
     continueGame();
 
+    // checking which button/gem was clicked and adding its value to player's score
     $(".gemBtn").on("click", function () {
         var gemVal = $(this).val();
 
@@ -113,6 +122,7 @@ $(document).ready(function () {
         updateData();
         verifyPoints();
 
+        // Verify results and display it
         if (result) {
             winsCounter++;
             youWinLose("You WIN");
@@ -121,6 +131,7 @@ $(document).ready(function () {
             youWinLose("You LOSE");
         }
 
+        // Resetting game's data to continue playing
         $("#resBtn").on("click", function () {
             youWinLoseFadeOut();
             setTimeout(continueGame,500);
