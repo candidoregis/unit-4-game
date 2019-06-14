@@ -22,6 +22,7 @@
 body {
     background-image: url("../images/escheresque_ste.png");
     background-repeat: repeat;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 .jumbotron{
@@ -51,6 +52,10 @@ img {
 #resultImg{
     max-width: 800px;
     max-height: auto;
+}
+
+.center{
+    padding: 3% 0;
 }
 
 /* ---------------------------------------------------------- */
